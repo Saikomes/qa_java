@@ -7,7 +7,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
@@ -31,8 +33,9 @@ public class CatTest {
 
     @Test
     public void getFoodTest() throws Exception {
-        Mockito.when(feline.eatMeat()).thenReturn(Arrays.asList("Животные", "Птицы", "Рыба"));
-        assertEquals("Кот должен есть животную пищу", Arrays.asList("Животные", "Птицы", "Рыба"), cat.getFood());
+        List<String> catFood = Arrays.asList("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.eatMeat()).thenReturn(catFood);
+        assertEquals("Кот должен есть животную пищу",catFood, cat.getFood());
         Mockito.verify(feline, times(1)).eatMeat();
     }
 }
